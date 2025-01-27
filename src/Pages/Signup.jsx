@@ -13,8 +13,12 @@ import {
     MDBCheckbox
   }
   from 'mdb-react-ui-kit';
+import { Link, useNavigate } from 'react-router-dom';
+import { SignupDetails } from '../Api';
 
 const Signup = () => {
+
+    const navigate=useNavigate()
 
     const [data,setData]=useState({
         name:String,
@@ -33,21 +37,21 @@ const Signup = () => {
 
     async function display(){
         try{
-            const finaloutput=await axios.post('http://localhost:3000/api/storeData',data)
-            console.log(finaloutput.data);
+          SignupDetails(data).then((finaloutput)=>{
+            console.log("********************************",finaloutput);
+            
             if(finaloutput.data.status=="success"){
-      setName("signup success")
-            }
+              setName("signup success")
+              navigate('/')
+                    }
+          })
+     
         }catch(err){
 console.log("*******************************err",err);
 
         }
- 
       
     }
-
-    
-
   return (
     <MDBContainer fluid>
 
@@ -78,7 +82,7 @@ console.log("*******************************err",err);
               <MDBInput name='password' label='Password' id='form3' type='password' onChange={handlechange}/>
             </div>
 
-
+<Link to={'/'}>I have already an account !</Link>
             <MDBBtn className='mb-4' size='lg' onClick={display}>Signup</MDBBtn>
 
           </MDBCol>
