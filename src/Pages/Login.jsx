@@ -13,9 +13,12 @@ import {
 }
 from 'mdb-react-ui-kit';
 import { Logindatass } from '../Api';
+import { useDispatch } from 'react-redux';
 
 function Login() {
 
+
+  const dispatch=useDispatch()
   const [data,setData]=useState({
     email:"",
     password:""
@@ -28,7 +31,7 @@ function Login() {
   }
 
   async function display(){
-Logindatass(data)
+Logindatass(data,dispatch)
    
   }
 

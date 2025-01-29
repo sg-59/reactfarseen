@@ -1,4 +1,5 @@
 import axios from "axios";
+import { addtoUser } from "./Redux/Userslice";
 
 export const SignupDetails=async(data)=>{
     console.log("data",data);
@@ -13,10 +14,11 @@ export const SignupDetails=async(data)=>{
     }
 }
 
-export const Logindatass=async(data)=>{
+export const Logindatass=async(data,dispatch)=>{
     try{
         const a=await axios.post('http://localhost:3000/login/verifyAccount',data)
         console.log("final output",a.data);
+        dispatch(addtoUser(a.data))
     }catch(err){
 
     }
