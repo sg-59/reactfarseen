@@ -4,6 +4,8 @@ import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import Home from './Pages/Home'
 import { useSelector } from 'react-redux'
+import Profile from './Pages/Profile'
+import Update from './Pages/Update'
 
 function App() {
 
@@ -25,6 +27,14 @@ console.log(token);
       path:'/signup',
       element:<Signup/>
     },
+    {
+      path:"/profile",
+      element:token ? <Profile/> : <Login/>
+    },
+    {
+      path:'/update',
+      element:token ? <Update/> : <Login/>
+    }
    
   ])
   return (

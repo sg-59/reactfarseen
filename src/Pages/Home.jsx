@@ -1,19 +1,14 @@
 import React from 'react'
 import { removeData } from '../Redux/Userslice'
 import { useDispatch } from 'react-redux'
+import Navabar from '../Component/Navabar'
 
 function Home() {
 
-  const dispatch=useDispatch()
-
-  function display(){
-   dispatch(removeData())
-  }
-
   return (
     <div>
-        <h1>Welcome to home page</h1>
-        <button onClick={display}>Logout</button>
+      <Navabar/>
+      <h1 style={{color:"lightblue",position:"absolute",top:"250px",left:"40%"}}>Home page</h1>
     </div>
   )
 }
